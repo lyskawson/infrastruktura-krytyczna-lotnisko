@@ -1,0 +1,26 @@
+\section{Odbiór, utrzymanie i podział prac}
+\begingroup\small
+\begin{tabularx}{\linewidth}{@{}P{24mm}Y Y@{}}
+\toprule\textbf{Próba} & \textbf{Kryterium} & \textbf{Dowód odbioru}\\\midrule
+CCTV dzień/noc & Kadr odpowiada zadaniu; czytelny ruch, brak istotnych zasłonięć i olśnień. & Próbki nagrań ze scenariuszy i zatwierdzona lista kadrów.\\
+Zapis i odtworzenie & 24 kanały, wymagany czas retencji, kontrolowany eksport i bufor kart. & Raport obciążenia, próba odtworzenia i integralności eksportu.\\
+KD i SSWiN & Prawidłowa akceptacja/odmowa, alarm otwarcia, sabotaż i praca bez LAN; W-01. & Macierz uprawnień i protokół z czasem obsługi.\\
+SSP i ewakuacja & Próba wszystkich elementów i sterowań, potwierdzenie scenariusza, wyjście bez LAN. & Protokół branżowy; pomiary sygnalizacji; zgody i dokumenty urządzeń.\\
+LAN i okablowanie & Certyfikacja miedzi, pomiary włókien, odtworzenie po przerwaniu R1--R4; W-02. & Raporty pomiarów i czasy rekonwergencji dla każdego odcinka.\\
+Zasilanie & 30 min UPS przy obciążeniu, zanik sieci, start agregatu i test baterii DC. & Rejestr mocy, napięć i czasu; próba SZR.\\
+Awaria integracji & Brak VMS/AI/LAN nie wstrzymuje lokalnych funkcji SSP; W-03. & Scenariusz awaryjny i podpisy branż odpowiedzialnych.\\
+AI i dane & Raport TP/FP/FN, czas p95, obciążenie operatora, maski i role. & Niezależny zestaw testowy i raport bez deklaracji niezmierzonych wyników.\\\bottomrule
+\end{tabularx}
+\endgroup
+
+\subsection*{Utrzymanie}
+Codziennie: przegląd alarmów, zapisu i zasilania przez dyżurnego. Co miesiąc: proponowana próba wybranego scenariusza i kontrola kopii. Kwartalnie: proponowana próba odtworzenia i analiza jakości alarmów. Terminy branżowych przeglądów wynikają z właściwych przepisów i instrukcji producentów; dla urządzeń ppoż. rozporządzenie przewiduje przeglądy nie rzadziej niż raz w roku [2].
+
+\subsection*{Propozycja pracy zespołowej -- według pakietów}
+\begin{enumerate}
+\item \textbf{Osoba A:} obiekt, ryzyka, geometria i projekt trasowy.
+\item \textbf{Osoba B:} CCTV, KD i SSWiN; rejestr urządzeń.
+\item \textbf{Osoba C:} SSP, scenariusze reakcji i zasilanie.
+\item \textbf{Osoba D:} sieć, AI, zestawienie i redakcja PDF. Przy innym składzie pakiety można łączyć.
+\end{enumerate}
+Na prezentacji warto przejść przez jeden alarm od urządzenia do reakcji operatora, następnie pokazać tę samą sytuację przy braku LAN i energii. Taka narracja łączy schematy, obliczenia i procedury.

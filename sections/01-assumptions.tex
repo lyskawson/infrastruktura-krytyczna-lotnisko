@@ -1,0 +1,23 @@
+\section{Cel, zakres i założenia}
+\lead{Cztery współpracujące systemy, jedna sytuacja operacyjna, lokalna zdolność działania podczas awarii.}
+Projekt obejmuje monitoring wizyjny CCTV, kontrolę dostępu KD, system sygnalizacji włamania i napadu SSWiN oraz system sygnalizacji pożarowej SSP, określany w temacie także jako SAP. Integracja w centrum nadzoru SOC ma ułatwić ocenę zdarzenia i koordynację reakcji.
+
+Wybrano fikcyjną strefę terminalowo-techniczną lotniska, aby udostępnić opracowanie publicznie i zachować pełną kontrolę nad założeniami. Odniesienie do infrastruktury krytycznej wynika z funkcji transportowej i potrzeby ciągłości usług. Nie przesądza o formalnym zakwalifikowaniu obiektu do IK [1].
+
+\begin{tabularx}{\linewidth}{@{}P{42mm}Y@{}}
+\toprule\textbf{Parametr} & \textbf{Założenie koncepcyjne}\\\midrule
+Obszar opracowania & 600 $\times$ 400 m = 24 ha; lokalny układ współrzędnych, bez geolokalizacji.\\
+Budynki & Terminal 80 $\times$ 40 m; hangar 40 $\times$ 30 m; obiekt techniczny 20 $\times$ 15 m; portiernia 10 $\times$ 8 m.\\
+Ruch i obsada & Do 300 osób jednocześnie w terminalu; ochrona obecna całodobowo; dwa stanowiska SOC.\\
+Węzły & N0: terminal i SOC; N1: hangar; N2: techniczny; N3: portiernia i dwie bramy.\\
+Skala systemu & 24 kamery; 12 drzwi i 2 bramy KD; 24 czujki ruchu i 16 kontaktronów SSWiN; 80 czujek pożarowych.\\
+Kontynuacja pracy & LAN z pierścieniem światłowodowym; UPS 30 min; agregat; niezależne baterie central i zasilaczy KD.\\\bottomrule
+\end{tabularx}
+
+\subsection*{Granice projektu}
+Zakres obejmuje wybrane wejścia, budynki, bramy i rejon płyty postojowej. Nie obejmuje całego obwodu lotniska, pasa startowego, nawigacji, kontroli ruchu lotniczego, ochrony antydronowej ani stref paliwowych. Obsługę bram ograniczono do interfejsu KD; napędy i urządzenia bezpieczeństwa ruchu wymagają odrębnego projektu.
+
+\begin{note}{Co wymaga rozwinięcia przed realizacją}
+Brak mapy geodezyjnej, rzeczywistych rzutów, scenariusza pożarowego i kart urządzeń. Lokalizacje, długości i liczby czujek są koncepcją, a nie dokumentacją wykonawczą. Rozwiązania ppoż., zasilanie, ewakuację i wymagania ochrony lotnictwa trzeba uzgodnić w rzeczywistym procesie projektowym.
+\end{note}
+\src{[1] RCB -- pojęcie infrastruktury krytycznej; pozostałe parametry: założenia własne}

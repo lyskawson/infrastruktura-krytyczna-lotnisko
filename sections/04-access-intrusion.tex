@@ -1,0 +1,25 @@
+\subsection{Kontrola dostępu i SSWiN}
+\textbf{KD: 14 punktów} obejmuje 12 drzwi i 2 bramy. Drzwi mają po jednym czytniku od strony wejścia, a bramy po dwa czytniki (wjazd/wyjazd): łącznie 16. Osiem kontrolerów dwukanałowych daje 16 kanałów, z czego 14 jest wykorzystanych. Uprawnienia i harmonogramy przechowuje kontroler lokalny.
+
+\begin{tabularx}{\linewidth}{@{}P{33mm}Y@{}}
+\toprule\textbf{Funkcja KD} & \textbf{Przyjęte rozwiązanie}\\\midrule
+Identyfikator & Karta z uwierzytelnianiem kryptograficznym; w strefie D dodatkowo PIN. Nie opierać dostępu wyłącznie na numerze UID.\\
+Czytnik -- kontroler & OSDP Secure Channel po RS-485; unikalne klucze, nadzór połączenia, wyłączony tryb instalacyjny po uruchomieniu [4].\\
+Wyposażenie drzwi & 12 zamków, 12 czujników stanu, 12 przycisków wyjścia i 12 miejscowych elementów awaryjnego zwolnienia blokady, jeśli wymaga tego dany typ zamknięcia.\\
+Wyjście i pożar & Mechaniczne swobodne wyjście od wewnątrz. Dla zamknięć wymagających odblokowania: niezależny, nadzorowany tor SSP zgodny ze scenariuszem; samo API nie wystarcza.\\
+Brama & Dwa interfejsy do sterowników bram; sygnały otwarcia i stanu. Fotokomórki, napęd i bezpieczny ruch dobiera odrębna branża.\\\bottomrule
+\end{tabularx}
+
+\textbf{SSWiN: 4 centrale lokalne}, każda o pojemności co najmniej 32 wejść, obejmują 24 czujki ruchu PIR/dual i 16 dodatkowych kontaktronów otworów. Kontaktrony SSWiN są odrębne od 12 czujników KD i nie mogą być liczone ponownie jako te same elementy. Po jednym manipulatorze i sygnalizatorze na budynek.
+
+\begin{tabularx}{\linewidth}{@{}P{24mm}rrrrY@{}}
+\toprule\textbf{Węzeł} & \textbf{Drzwi} & \textbf{Bramy} & \textbf{PIR} & \textbf{Kontakt.} & \textbf{Kontrolery KD}\\\midrule
+N0 terminal & 6 & 0 & 12 & 8 & 3 (6 kanałów)\\
+N1 hangar & 3 & 0 & 6 & 4 & 2 (4 kanały)\\
+N2 techniczny & 2 & 0 & 4 & 2 & 1 (2 kanały)\\
+N3 portiernia & 1 & 2 & 2 & 2 & 2 (4 kanały)\\\midrule
+\textbf{Razem} & \textbf{12} & \textbf{2} & \textbf{24} & \textbf{16} & \textbf{8 (16 kanałów)}\\\bottomrule
+\end{tabularx}
+
+Alarm, sabotaż, uszkodzenie i rozbrojenie są odrębnymi zdarzeniami. Nadzorowane linie wejściowe dobiera się do central i urządzeń. Transmisja IP/LTE każdej centrali jest kanałem do centrum odbiorczego ochrony, po zawarciu usługi i próbie obu torów; nie jest to tor transmisji alarmu pożarowego.
+\src{[4] SIA OSDP; [7] zakres PN-EN 50131-1. Dobór stopnia zabezpieczenia po analizie ryzyka i doborze kompletu urządzeń}

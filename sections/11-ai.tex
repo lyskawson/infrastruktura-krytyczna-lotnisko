@@ -1,0 +1,17 @@
+\section{Zastosowanie ML i AI}
+\lead{Analityka pomaga operatorowi zauważyć zdarzenie; jej skuteczność musi być zmierzona na miejscu.}
+Proponuje się pilotaż na ośmiu z 24 kamer, z przetwarzaniem lokalnym na wydzielonym serwerze AI. Modele detekcji i śledzenia obiektów analizują obraz, a reguły strefowe zamieniają wyniki na kandydatów do weryfikacji. Rozpoznawania twarzy, emocji ani automatycznego podejmowania decyzji o uprawnieniach nie przewidziano.
+
+\fig{ai-flow.pdf}{1}{Przepływ analityki: obraz -- detekcja ML -- reguła -- weryfikacja człowieka. Wartości poniżej są założeniami odbiorowymi, nie wynikiem eksperymentu.}
+\begin{tabularx}{\linewidth}{@{}P{32mm}Y Y@{}}
+\toprule\textbf{Przypadek} & \textbf{Działanie} & \textbf{Ryzyko i kontrola}\\\midrule
+Wejście w strefę & Wykrycie osoby w zdefiniowanym obszarze; skojarzenie z KD i obrazem. & Cienie, pojazdy, pogoda; testy scenariuszy pozytywnych i negatywnych.\\
+Zdarzenie przy bramie & Ocena przekroczenia linii i kierunku ruchu; karta zdarzenia dla operatora. & Zasłonięcia i grupy osób; nie jest to pewny dowód przejścia „na ogonie”.\\
+Diagnostyka urządzeń & Trend utraty pakietów, obciążenia dysków i UPS; prosty próg lub model anomalii. & Zmiana obciążenia może być prawidłowa; zgłoszenie techniczne po weryfikacji.\\\bottomrule
+\end{tabularx}
+
+\subsection*{Jak sprawdzimy, czy AI daje wartość?}
+Próba obejmie różne pory dnia, opady, zasłonięcia i typowy ruch. Dane testowe muszą być oddzielone od danych strojenia według dni i scenariuszy. Raport poda TP, FP i FN, liczbę kamerogodzin oraz \(precision=TP/(TP+FP)\) i \(recall=TP/(TP+FN)\).
+
+Cele pilotażu: recall co najmniej 90\% w uzgodnionych scenariuszach, nie więcej niż 1 fałszywy alarm na kamerę na godzinę, opóźnienie p95 do 2 s. Są to propozycje do ustalenia z ochroną; dla ośmiu kamer dopuszczałyby do ośmiu fałszywych alarmów na godzinę, więc obciążenie operatora należy ocenić osobno. Brak wyników oznacza brak podstaw do deklarowania skuteczności.
+\src{[10] NIST AI RMF jako odniesienie do zarządzania ryzykiem AI. Scenariusze i progi: propozycja własna}

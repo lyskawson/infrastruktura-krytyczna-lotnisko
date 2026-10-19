@@ -1,0 +1,29 @@
+name: PDF i pakiet Overleaf
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Instalacja LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends latexmk lmodern texlive-latex-extra texlive-fonts-recommended texlive-lang-polish
+      - name: Sprawdzenie i kompilacja
+        run: make pdf overleaf
+      - uses: actions/upload-artifact@v7
+        with:
+          name: lotnisko-pdf-i-overleaf
+          path: |
+            output/pdf/lotnisko-polnoc.pdf
+            output/lotnisko-overleaf.zip
+          if-no-files-found: error
+          retention-days: 30

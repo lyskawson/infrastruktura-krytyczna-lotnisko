@@ -1,0 +1,18 @@
+{
+  "site_m": [600, 400],
+  "nodes": [
+    {"id": "N0", "name": "Terminal / SOC", "xy": [280,120], "rect": [240,100,80,40], "fixed": 10, "ptz": 0, "doors": 6, "gates": 0, "kd_controllers": 3, "pir": 12, "contacts": 8, "fire_detectors": 48, "rop": 6, "fire_sounders": 6, "ups_load_w": 1005},
+    {"id": "N1", "name": "Hangar", "xy": [100,260], "rect": [80,250,40,30], "fixed": 4, "ptz": 1, "doors": 3, "gates": 0, "kd_controllers": 2, "pir": 6, "contacts": 4, "fire_detectors": 20, "rop": 2, "fire_sounders": 2, "ups_load_w": 108},
+    {"id": "N2", "name": "Techniczny", "xy": [470,240], "rect": [460,230,20,15], "fixed": 3, "ptz": 1, "doors": 2, "gates": 0, "kd_controllers": 1, "pir": 4, "contacts": 2, "fire_detectors": 8, "rop": 2, "fire_sounders": 2, "ups_load_w": 96},
+    {"id": "N3", "name": "Portiernia / bramy", "xy": [520,40], "rect": [515,36,10,8], "fixed": 3, "ptz": 2, "doors": 1, "gates": 2, "kd_controllers": 2, "pir": 2, "contacts": 2, "fire_detectors": 4, "rop": 2, "fire_sounders": 2, "ups_load_w": 126}
+  ],
+  "routes": [
+    {"id": "R1", "points": [[280,120],[100,120],[100,260]], "length_m": 320},
+    {"id": "R2", "points": [[100,260],[100,340],[470,340],[470,240]], "length_m": 550},
+    {"id": "R3", "points": [[470,240],[560,240],[560,40],[520,40]], "length_m": 330},
+    {"id": "R4", "points": [[520,40],[280,40],[280,120]], "length_m": 320}
+  ],
+  "video": {"bitrate_mbps": 4, "retention_days": 7, "disks": 4, "disk_tb": 8, "raid_parity_disks": 2, "ai_streams": 8},
+  "power_w": {"cameras_pse": 360, "switches_base": 120, "core_firewall": 65, "vms_ai": 450, "soc_monitors": 240, "admin_integration": 100},
+  "camera_terminal_xy": [[3,3],[27,22],[3,37],[33,18],[53,37],[77,18],[47,37],[77,3]]
+}

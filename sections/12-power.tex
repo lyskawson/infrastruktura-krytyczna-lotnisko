@@ -1,0 +1,21 @@
+\section{Zabezpieczenie dostawy energii}
+\subsection{Architektura zasilania}
+\fig{power.pdf}{1}{Sieć i agregat przez SZR zasilają rozdział systemów bezpieczeństwa. UPS podtrzymują IT/CCTV; SSP, KD i SSWiN mają osobne zasilacze buforowe i baterie lokalne.}
+\begin{tabularx}{\linewidth}{@{}Y r Y@{}}
+\toprule\textbf{Odbiornik IT/CCTV} & \textbf{Moc [W]} & \textbf{Podstawa bilansu}\\\midrule
+Kamery, po stronie PSE & 360 & 20 $\times$ 12 W + 4 $\times$ 30 W\\
+Przełączniki PoE, własne straty & 120 & 4 $\times$ 30 W, bez mocy kamer\\
+Rdzeń + zapora & 65 & 40 + 25 W\\
+Serwer VMS z dyskami + serwer AI & 450 & 300 + 150 W\\
+Stanowiska SOC + monitory & 240 & 2 $\times$ 70 + 4 $\times$ 25 W\\
+Host administracyjny i integracja & 100 & Rezerwa sprzętowa w N0\\\midrule
+\textbf{Suma} & \textbf{1335} & \textbf{1669 W po dodaniu 25\%}\\\bottomrule
+\end{tabularx}
+
+Moc kamer uwzględniono tylko raz. Moc bazowa przełączników obejmuje ich elektronikę i przyjęte straty; po doborze sprzętu należy ją zastąpić wartością z karty i pomiaru. Obciążenia przypisano do lokalnych UPS: N0 -- 1005 W, N1 -- 108 W, N2 -- 96 W, N3 -- 126 W.
+
+Przyjęto jeden UPS online 3 kVA / co najmniej 2,7 kW w N0 i trzy UPS 1 kVA / co najmniej 0,9 kW w N1--N3, z bateriami dobranymi do czasu podtrzymania. Sama moc w VA nie określa czasu pracy. Szafy, zasilacze i maszty wymagają uziemienia, połączeń wyrównawczych oraz ochrony przepięciowej dobranej do instalacji.
+
+\begin{note}{Pożar i wyłącznik prądu}
+Położenie obwodów SSP względem przeciwpożarowego wyłącznika prądu i zachowanie pozostałych odbiorów wymagają uzgodnionego projektu elektrycznego i scenariusza pożarowego. Wspólny UPS IT nie jest jedynym źródłem podtrzymania SSP.
+\end{note}

@@ -1,0 +1,21 @@
+\section{Procedury bezpieczeństwa}
+\lead{Każdy alarm ma właściciela, miejsce, priorytet i zapis przebiegu reakcji.}
+\begingroup\small
+\begin{tabularx}{\linewidth}{@{}P{23mm}Y Y@{}}
+\toprule\textbf{Zdarzenie} & \textbf{Działanie systemu} & \textbf{Działanie odpowiedzialnego}\\\midrule
+Pożar / ROP & SSP uruchamia działania zgodnie ze scenariuszem; SOC pokazuje lokalizację. AI nie jest warunkiem reakcji. & Dyżurny uruchamia powiadomienie właściwych służb zgodnie z instrukcją; personel prowadzi ewakuację. Ochrona zapewnia dostęp ratownikom.\\
+Włamanie & SSWiN zapisuje stan i wysyła alarm; SOC wywołuje kamerę. & Ochrona weryfikuje zdarzenie z bezpiecznego miejsca, kieruje patrol i dokumentuje wynik. Brak obrazu nie jest podstawą do automatycznego odrzucenia alarmu.\\
+Drzwi wymuszone / otwarte & KD zgłasza alarm, rejestruje identyfikator przejścia, kojarzy nagranie. & Operator ocenia przyczynę; patrol sprawdza miejsce; przywrócenie blokady po potwierdzeniu bezpiecznych warunków.\\
+Utrata karty & Zmiana statusu identyfikatora i dystrybucja do kontrolerów. & Administrator KD blokuje kartę, sprawdza synchronizację każdego kontrolera; przy braku łącza wprowadza ochronę zastępczą.\\
+Brak energii & UPS przejmuje IT/CCTV, centrale pracują z baterii; SZR uruchamia agregat. & Dyżurny potwierdza pracę źródła i poziom paliwa. Gdy agregat nie wystartuje, wdraża ograniczenie funkcji i nadzór fizyczny.\\
+Brak LAN / VMS & Zapis kamer na kartach, praca lokalna central; informacja techniczna. & Ochrona przechodzi na lokalne kanały łączności; administrator ustala zakres awarii i przywraca usługi.\\
+Podejrzenie cyberincydentu & Alarmy techniczne i dzienniki pozostają dostępne lokalnie, jeśli to możliwe. & Administrator izoluje objęty segment, zachowuje logi i koordynuje z ochroną. Zmiany nie mogą pozbawić ludzi możliwości wyjścia.\\\bottomrule
+\end{tabularx}
+\endgroup
+
+\subsection*{Przekazanie dyżuru i zamknięcie incydentu}
+Dyżurny sprawdza aktywne alarmy, wyłączenia, stan zasilania, łączność i obsadę. Zgłoszenie incydentu zawiera czas, identyfikator urządzenia, miejsce, podjęte działania, osobę odpowiedzialną i wynik. Eksport nagrania wymaga uprawnienia, odnotowania odbiorcy i zabezpieczenia integralności pliku, np. skrótem SHA-256.
+
+\begin{note}{Nie kasować alarmu tylko dlatego, że zniknął objaw}
+Kasowanie i powrót do normalnej pracy następują po ustaleniu przyczyny i zgodnie z instrukcją danego systemu. Przy uszkodzeniu SSP dyżurny organizuje zastępczy nadzór według uzgodnionej procedury i wzywa serwis; panel integracyjny nie zastępuje sprawnej centrali.
+\end{note}

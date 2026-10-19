@@ -1,0 +1,23 @@
+\subsection{System sygnalizacji pożarowej SSP (SAP)}
+Każdy budynek otrzymuje lokalną centralę SSP z własnym zasilaczem i baterią. Centrale łączy wydzielona, kompatybilna magistrala światłowodowa producenta. Działa ona na osobnej parze włókien, bez przełączników LAN. Awaria integracji z SOC nie zatrzymuje lokalnego wykrywania ani sygnalizacji.
+
+\begin{tabularx}{\linewidth}{@{}P{35mm}rrrrY@{}}
+\toprule\textbf{Budynek} & \textbf{Czujki} & \textbf{ROP} & \textbf{Sygn.} & \textbf{I/O} & \textbf{Izolatory}\\\midrule
+Terminal / CSP-0 & 48 & 6 & 6 & 2 & 2\\
+Hangar / CSP-1 & 20 & 2 & 2 & 2 & 2\\
+Techniczny / CSP-2 & 8 & 2 & 2 & 2 & 2\\
+Portiernia / CSP-3 & 4 & 2 & 2 & 2 & 2\\\midrule
+\textbf{Razem} & \textbf{80} & \textbf{12} & \textbf{12} & \textbf{8} & \textbf{8}\\\bottomrule
+\end{tabularx}
+
+\textbf{Dobór detekcji.} W terminalu rozważa się punktowe czujki dymu lub wielosensorowe; w hangarze rodzaj detekcji trzeba dobrać do wysokości, wentylacji, pyłu i spalin. Liczba 20 czujek w hangarze jest rezerwą ilościową do koncepcji, a nie potwierdzonym pokryciem. Czujki zasysające lub liniowe mogą zmienić zestawienie.
+
+\textbf{Pętle i sygnalizacja.} Przewidziano po jednej pętli adresowalnej na budynek oraz centralę z rezerwą co najmniej jednej pętli. Orientacyjne długości pętli lokalnych: 600, 300, 150 i 100 m. Izolatory ograniczają obszar uszkodzenia zwarciowego; ich rzeczywiste rozmieszczenie wynika z architektury systemu. Liczbę sygnalizatorów należy potwierdzić pomiarem słyszalności i wymaganiami dostępności.
+
+\textbf{Sterowania.} Osiem modułów I/O to rezerwa funkcjonalna; liczba i rodzaj kanałów wymagają macierzy sterowań. Nie zadeklarowano w ten sposób kompletnego sterowania wszystkimi 12 drzwiami. Nadzór i zwolnienie wyjść wymagają zgodnych interfejsów, dodatkowych wyjść i odpowiednich zasilaczy, jeśli wyniknie to z doboru zamknięć.
+
+\begin{note}{Zasada nadrzędna}
+Alarm pożarowy i ewakuacja wynikają z uzgodnionego scenariusza i funkcji SSP. Weryfikacja obrazu przez ochronę ani wynik AI nie mogą być warunkiem uruchomienia wymaganych działań. Panel SOC otrzymuje wyłącznie informacje o zdarzeniach SSP.
+\end{note}
+Zakres nie rozstrzyga obowiązku DSO ani transmisji do PSP dla rzeczywistego obiektu. Należy ustalić je według jego parametrów i przepisów; zwykłe sygnalizatory nie zastępują wymaganego DSO. Sposób monitorowania alarmów pożarowych wymaga odrębnego uzgodnienia.
+\src{[2] rozporządzenie ppoż. wraz ze zmianami; [8] PN-EN 54-4 -- zakres zasilaczy. Nie deklaruje się zgodności wykonawczej całego systemu}

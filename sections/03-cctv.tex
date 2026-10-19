@@ -1,0 +1,24 @@
+\section{Charakterystyka systemów}
+\subsection{Monitoring wizyjny CCTV}
+Zaprojektowano 20 kamer stałopozycyjnych 4 Mpx oraz 4 kamery PTZ. Osiem kamer stałych znajduje się wewnątrz terminalu, a pozostałe 16 kamer na zewnątrz. PTZ służą operatorowi do weryfikacji; podstawowy nadzór punktów zapewniają kamery stałe.
+
+\begin{tabularx}{\linewidth}{@{}P{30mm}Y Y@{}}
+\toprule\textbf{Element} & \textbf{Parametry doboru} & \textbf{Zastosowanie}\\\midrule
+20 kamer stałych & 4 Mpx, H.265, WDR, obiektyw dobrany do kadru, ONVIF Profile T; na zewnątrz IP66 i odporność mechaniczna odpowiednia do montażu. & Wejścia, korytarze, bramy, elewacje. Przyjęte 12 W na port PSE.\\
+4 kamery PTZ & Min. Full HD, zoom optyczny, presety, PoE+; maks. 25,5 W na urządzeniu przy budżecie 30 W portu. & Ocena zdarzeń w rejonie hangaru, obiektu technicznego i bram.\\
+VMS i zapis & Licencja 32 kanałów, 24 zajęte; serwer z 4 dyskami po 8 TB w RAID 6; zarządzanie rolami i eksportem. & Zapis ciągły, wyszukiwanie zdarzeń, ślad audytowy.\\
+Bufor lokalny & 24 karty 128 GB typu high endurance; zgodność sprawdzona z kamerą. & Zapis przy utracie sieci; odtworzenie braków tylko przy obsłudze tej funkcji przez VMS i kamerę.\\\bottomrule
+\end{tabularx}
+
+\subsection*{Pojemność i ruch -- policzone dla tych samych założeń}
+Przyjęto średnio 4 Mb/s na kamerę, 25 kl./s i zapis ciągły. Bitrate należy potwierdzić w dzień, w nocy i podczas opadów; 4 Mpx i H.265 nie gwarantują stałych 4 Mb/s.
+\[
+R=24\cdot4=96\ \mathrm{Mb/s},\qquad
+S=\frac{96\cdot10^6}{8}\cdot7\cdot86400=7{,}26\ \mathrm{TB}.
+\]
+Z zapasem 25\% potrzeba \textbf{9,07 TB}. RAID 6 z 4 dysków po 8 TB daje nominalnie 16 TB, a po odłożeniu 10\% na narzuty i wolne miejsce -- 14,4 TB. Jednostki są dziesiętne. RAID nie zastępuje kopii materiału dowodowego.
+
+\begin{note}{Kadr dobiera się do zadania}
+Dla wejścia wymagamy czytelnego materiału identyfikacyjnego, dla płyty -- obserwacji zdarzenia. Przykład geometryczny: 2688 pikseli / 10 m szerokości kadru = 269 px/m. Wynik sam nie dowodzi identyfikacji; potrzebna jest próba obrazu twarzy, światła, ruchu i kąta montażu.
+\end{note}
+\src{[3] ONVIF Profile T; [6] aktualny katalog norm CCTV. Pojemności i wymagania urządzeń: obliczenia i założenia własne}

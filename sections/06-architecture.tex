@@ -1,0 +1,11 @@
+\section{Schemat ideowy i integracja}
+\lead{Wspólny widok zdarzeń przy zachowaniu odrębności funkcji pożarowych.}
+\fig{architecture.pdf}{1}{Architektura funkcjonalna. Niebieski: sieć zabezpieczeń; czerwony: autonomiczny SSP; linia przerywana: eksport informacji.}
+\subsection*{Co dzieje się po alarmie?}
+Zdarzenie KD lub SSWiN trafia do platformy integracyjnej w SOC, która pokazuje miejsce, czas, status urządzenia i przypisaną kamerę. Operator potwierdza obsługę i prowadzi kartę incydentu. Klip dowodowy eksportuje osoba z odpowiednią rolą, a operacja pozostawia ślad w dzienniku.
+
+SSP wykonuje lokalny scenariusz niezależnie od platformy integracyjnej. Bramka SSP udostępnia zdarzenia przez funkcję tylko do odczytu, zatwierdzoną przez producenta. W konfiguracji SOC nie udostępnia się kasowania alarmów, blokowania czujek ani zmiany sterowań pożarowych.
+
+\begin{note}{Praca przy awarii}
+\textbf{Brak LAN:} KD używa lokalnych uprawnień; SSWiN działa lokalnie i zgłasza zdarzenia kanałem zapasowym; kamery zapisują na kartach. \textbf{Brak VMS/AI:} utrata wspólnego widoku, lecz nie lokalnej detekcji SSP. \textbf{Uszkodzenie centrali:} dotknięty budynek wymaga procedury zastępczej i interwencji serwisu.
+\end{note}

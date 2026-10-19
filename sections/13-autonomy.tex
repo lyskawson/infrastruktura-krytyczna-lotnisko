@@ -1,0 +1,21 @@
+\subsection{Bilans podtrzymania i źródło rezerwowe}
+\textbf{UPS -- cel 30 min.} Dla sprawności 0,90 i współczynnika zapasu 1,25 minimalna oszacowana energia nominalna baterii wynosi:
+\[
+E=\frac{1{,}335\ \mathrm{kW}\cdot0{,}5\ \mathrm{h}}{0{,}90}\cdot1{,}25
+=0{,}927\ \mathrm{kWh}.
+\]
+Rozdział na węzły daje 0,698 / 0,075 / 0,067 / 0,088 kWh. Do koncepcji przyjęto co najmniej 1,0 kWh dla N0 i po 0,15 kWh dla N1--N3. To bilans energii, nie potwierdzony czas pracy konkretnego UPS. Odbiór wymaga krzywych producenta, sprawdzenia temperatury, starzenia, prądu rozładowania i próby obciążeniowej.
+
+\begin{tabularx}{\linewidth}{@{}P{24mm}Y Y@{}}
+\toprule\textbf{System DC} & \textbf{Założenie dla jednej jednostki} & \textbf{Dobór wstępny}\\\midrule
+SSP, 4 centrale & 24 V; 0,35 A dozór przez 24 h i 1,5 A alarm przez 0,5 h. $Q=1{,}25(0{,}35\cdot24+1{,}5\cdot0{,}5)=11{,}44$ Ah. & Każda: 2 $\times$ 12 V / 17 Ah szeregowo = 24 V / 17 Ah. Łącznie 8 akumulatorów.\\
+SSWiN, 4 centrale & 12 V; 0,25 A przez 24 h i 1 A przez 0,25 h. $Q=7{,}81$ Ah po dodaniu 25\%. & Każda: 12 V / 17 Ah; łącznie 4 akumulatory.\\
+KD, 8 zasilaczy & 12 V; 1,2 A przez 4 h i 2 A przez 0,25 h. $Q=6{,}63$ Ah po dodaniu 25\%. & Każdy: 12 V / 9 Ah; łącznie 8 akumulatorów.\\\bottomrule
+\end{tabularx}
+
+Podane czasy i prądy są założeniami koncepcyjnymi, nie uniwersalnymi wymaganiami norm. Wymagany czas dozoru, rezerwę, ładowanie i pojemność trzeba potwierdzić dla danego systemu i warunków obsługi. Sprawdzić również spadki napięć przy najniższym napięciu baterii. Połączenie szeregowe zwiększa napięcie, a nie pojemność w Ah.
+
+\subsection*{Agregat i SZR}
+Założono agregat 10 kVA / 8 kW, pracujący wyłącznie na potrzeby tej strefy bezpieczeństwa. Bilans: IT/CCTV 1,335 kW + rezerwa 0,4 kW na zasilacze DC i ładowanie + 0,6 kW istniejącego oświetlenia obsługi. Po dodaniu 25\% otrzymujemy 2,92 kW, tj. 3,65 kVA przy $\cos\varphi=0{,}8$. Dobór wymaga jeszcze sprawdzenia prądów rozruchowych i zgodności z UPS.
+
+Cel rozruchu i przełączenia: do 60 s, bez ręcznej interwencji, do potwierdzenia próbą SZR. Zakładana autonomia paliwowa: 8 h przy obciążeniu obliczeniowym; zbiornik dobiera się dopiero z krzywej zużycia producenta. Agregat nie zasila całego lotniska ani systemów nawigacyjnych.

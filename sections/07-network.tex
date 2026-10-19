@@ -1,0 +1,22 @@
+\section{Sieć transmisyjna i technologie}
+Zaprojektowano fizyczny pierścień światłowodowy OS2 12J: N0--N1--N2--N3--N0. Każdy odcinek wykorzystuje jedną parę włókien dla LAN i osobną parę dla magistrali SSP, jeżeli zatwierdza to producent. Pozostałe osiem włókien stanowi rezerwę. Wspólny kabel oznacza wspólne ryzyko uszkodzenia obu par.
+
+LAN obejmuje jeden rdzeń zarządzalny w N0 i trzy przełączniki terenowe w pierścieniu. Czwarty przełącznik PoE obsługuje terminal i jest dołączony lokalnie do rdzenia. RSTP blokuje logiczną pętlę. Każde z czterech łączy 1 Gb/s wymaga dwóch modułów SFP 1000BASE-LX -- razem osiem. Serwer VMS łączy się z rdzeniem przez 10GBASE-T.
+
+\begin{tabularx}{\linewidth}{@{}P{29mm}P{34mm}Y@{}}
+\toprule\textbf{Segment} & \textbf{Urządzenia} & \textbf{Dopuszczony ruch}\\\midrule
+VLAN 10 CCTV & 24 kamery & Strumienie do VMS/AI, czas i zarządzanie z wydzielonego hosta.\\
+VLAN 20 KD & 8 kontrolerów & Komunikacja z serwerem KD i odbiór zdarzeń; bez dostępu kamer.\\
+VLAN 30 SSWiN & 4 centrale & Zdarzenia do integracji i centrum odbiorczego według konfiguracji.\\
+VLAN 40 serwery & VMS, AI, integracja & Dostęp usługowy według listy dozwolonych połączeń.\\
+VLAN 50 nadzór & 2 stanowiska SOC & Klient VMS i panel zdarzeń; brak rutynowej administracji.\\
+VLAN 99 zarządzanie & Urządzenia sieciowe & Osobny host administracyjny, MFA na bramie, dzienniki.\\\bottomrule
+\end{tabularx}
+
+VLAN sam nie zapewnia ochrony. Ruch między segmentami filtruje zapora; domyślnie jest zabroniony. Sieć zabezpieczeń nie służy pasażerom ani systemom biurowym. Zdalny serwis odbywa się przez VPN i host administracyjny z czasowo przyznanym uprawnieniem [9].
+
+\subsection*{Bilans portów, PoE i pasma}
+Każdy z czterech przełączników dostępowych ma 24 porty RJ45 PoE+ i budżet co najmniej 240 W. Obciążenia kamer w N0/N1/N2/N3 wynoszą odpowiednio \textbf{120/78/66/96 W}; rezerwa 25\% nadal mieści się w budżecie. Dodatkowe porty zajmują kontrolery, centrale i stacje, zależnie od węzła.
+
+Zapis 96 Mb/s + osiem strumieni AI 32 Mb/s + podglądy SOC 32 Mb/s = 160 Mb/s; z zapasem 25\% -- \textbf{200 Mb/s}. Uplink 1 Gb/s wystarcza dla przyjętego ruchu, lecz wynik trzeba zweryfikować pod obciążeniem i po przerwaniu pierścienia. Miedź kat. 6A: docelowo do 90 m toru stałego i do 100 m kanału z przewodami przyłączeniowymi.
+\src{[9] CISA -- segmentacja. Topologia, VLAN i wielkości ruchu: projekt własny}

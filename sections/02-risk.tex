@@ -1,0 +1,26 @@
+\section{Strefy ochrony i wymagania}
+\lead{Priorytetem jest wykrycie zdarzenia, bezpieczne wyjście ludzi i zachowanie podstawowych funkcji mimo awarii.}
+Przyjęto cztery strefy funkcjonalne: A -- publiczną, B -- pracowniczą, C -- operacyjną i D -- techniczną. Są to oznaczenia dydaktyczne; nie zastępują formalnego podziału stref ochrony lotnictwa ani stref pożarowych.
+
+\begin{tabularx}{\linewidth}{@{}P{33mm}Y Y@{}}
+\toprule\textbf{Zdarzenie} & \textbf{Skutek / priorytet} & \textbf{Środek ograniczający}\\\midrule
+Wejście bez uprawnień & Dostęp do zaplecza i infrastruktury; wysoki. & KD, stan drzwi, kamera przypisana do przejścia, interwencja ochrony.\\
+Włamanie po godzinach & Utrata sprzętu, przerwa w pracy; wysoki. & Lokalny SSWiN, strefy uzbrojenia, nadzór sabotażu, weryfikacja CCTV.\\
+Dym lub pożar & Zagrożenie życia i utrata funkcji; najwyższy. & Autonomiczny SSP, sygnalizacja, scenariusz ewakuacji i sterowań.\\
+Utrata zasilania / łącza & Utrata podglądu i zdarzeń; wysoki. & UPS, baterie DC, agregat, pierścień i praca lokalna.\\
+Przejęcie kamery lub konta & Dostęp do obrazu, zakłócenie usług; wysoki. & Segmentacja, MFA, kontrola aktualizacji, kopie konfiguracji.\\
+Błędny alarm AI & Przeciążenie operatora; średni. & Walidacja na miejscu, ograniczenie liczby alarmów, decyzja człowieka.\\\bottomrule
+\end{tabularx}
+
+\subsection*{Wymagania mierzalne do odbioru}
+\begin{enumerate}
+\item \textbf{W-01:} alarm KD/SSWiN ma pojawić się w SOC z identyfikatorem miejsca i skojarzoną kamerą; cel: do 5 s w sprawnej sieci lokalnej.
+\item \textbf{W-02:} przecięcie jednego odcinka pierścienia LAN ma przywrócić łączność przez drugą stronę; cel: do 10 s, sprawdzony próbą.
+\item \textbf{W-03:} utrata VMS, AI lub LAN nie może zatrzymać lokalnego wykrywania i sygnalizacji pożaru ani mechanicznego wyjścia ewakuacyjnego.
+\item \textbf{W-04:} zapis CCTV ma pokryć przyjęty scenariusz 7 dni; podtrzymanie UPS ma wynieść minimum 30 min przy obciążeniu projektowym.
+\end{enumerate}
+
+Oceny ryzyka są jakościowe i służą wyborowi funkcji. Nie stanowią formalnej analizy ryzyka ani podstawy do deklaracji konkretnego stopnia zabezpieczenia całej instalacji.
+\begin{note}{Świadomie pozostawione ograniczenie}
+Pierścień ogranicza skutki awarii pojedynczego łącza. Jeden rdzeń LAN, jeden serwer VMS i lokalizacja SOC pozostają punktami pojedynczej awarii. Lokalny zapis na kartach kamer łagodzi utratę rejestracji; nie zapewnia ciągłego podglądu SOC.
+\end{note}
